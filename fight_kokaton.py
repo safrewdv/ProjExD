@@ -134,6 +134,16 @@ class Beam:   # 練習１
             screen.blit(self.img, self.rct)
 
 
+class  Explosion:
+    def __init__(self,bomb: Bomb):
+        self.img = pg.transform.rotozoom(pg.image.load("fig/explosion.gif"), 0, 2.0)
+        self.rct: pg.Rect = self.img.get_rect()
+        self.rct.centery = bomb.rct.center
+        self.life = 5
+    def update(self):
+        self.life -= 1
+        
+
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
