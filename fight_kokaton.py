@@ -141,7 +141,7 @@ def main():
     bg_img = pg.image.load("fig/pg_bg.jpg")
     bird = Bird((900, 400))
     bomb = Bomb((255, 0, 0), 10)
-     # bomb = Bomb((255, 0, 0), 10)
+    # bomb = Bomb((255, 0, 0), 10)
     bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
     beam = None # 練習１
     clock = pg.time.Clock()
@@ -187,7 +187,6 @@ def main():
                     bombs[i] = None
                     bird.change_img(6, screen)
                     pg.display.update()
-        
         bombs = [bomb for bomb in bombs if bomb is not None]
 
         key_lst = pg.key.get_pressed()
@@ -195,7 +194,8 @@ def main():
         for bomb in bombs:
             bomb.update(screen)
         if bomb is not None:
-            bomb.update(screen)
+            for bomb in bombs:
+                bomb.update(screen)
         if beam is not None: # 練習１
             beam.update(screen)
         pg.display.update()
